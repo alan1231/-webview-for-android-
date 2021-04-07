@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { WebView } from 'react-native-webview';
 import { Platform, BackHandler, ToastAndroid} from 'react-native';
+import SplashScreen from 'react-native-splash-screen'
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
+    setTimeout(()=>{SplashScreen.hide()}, 3000, )
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
       // this.runAndroid()
@@ -61,7 +63,7 @@ class App extends Component {
       return true;
     }
   };
-  
+
   render() {
     return (
       <WebView
